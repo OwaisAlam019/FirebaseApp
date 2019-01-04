@@ -1,5 +1,6 @@
 package com.example.owais.firebasedemo
 
+import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -44,5 +45,15 @@ class MainActivity : AppCompatActivity() {
                     Toast.makeText(applicationContext,"Login failed",Toast.LENGTH_SHORT).show()
                 }
             }
+    }
+
+    override fun onStart() {
+        super.onStart()
+        val currentUser = mAuth!!.currentUser
+        if(currentUser!=null){
+            var intent = Intent(this,userActivity::class.java)
+            startActivity(intent)
+        }
+
     }
 }
